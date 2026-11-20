@@ -34,19 +34,77 @@ def index():
 
 @app.route("/api/events", methods=["GET"])
 def list_events():
+    if supabase is None:
+        return jsonify({"error": "Supabase is not configured"}), 503
     try:
         query = supabase.table("events").select("*")
         status = request.args.get("status")
         if status:
             query = query.eq("status", status)
         response = query.execute()
+        events = response.data
+        try:
+            registration_rows = supabase.table("registrations").select("event_id").execute().data
+            counts = {}
+            for registration in registration_rows:
+                event_id = registration.get("event_id")
+                counts[event_id] = counts.get(event_id, 0) + 1
+            for event in events:
+                event["registered_count"] = counts.get(event.get("id"), 0)
+        except APIError:
+            for event in events:
+                event["registered_count"] = 0
+        return jsonify(events), 200
+    except APIError as error:
+        return jsonify({"error": error.message}), 500
+
+
+@app.route("/api/users", methods=["GET"])
+def list_users():
+    if supabase is None:
+        return jsonify({"error": "Supabase is not configured"}), 503
+    try:
+        response = supabase.table("users").select("id, role").order("id").execute()
         return jsonify(response.data), 200
+    except APIError as error:
+        return jsonify({"error": error.message}), 500
+
+
+@app.route("/api/events", methods=["POST"])
+def create_event():
+    if supabase is None:
+        return jsonify({"error": "Supabase is not configured"}), 503
+    data = request.get_json(silent=True) or {}
+    raw_title = data.get("title")
+    title = raw_title.strip() if isinstance(raw_title, str) else ""
+    organizer_id = data.get("organizer_id")
+    capacity = data.get("capacity")
+    if not title:
+        return jsonify({"error": "Event title is required"}), 400
+    if not valid_uuid(organizer_id):
+        return jsonify({"error": "Choose a valid organizer ID"}), 400
+    try:
+        capacity = int(capacity)
+    except (TypeError, ValueError):
+        return jsonify({"error": "Capacity must be a positive whole number"}), 400
+    if capacity < 1:
+        return jsonify({"error": "Capacity must be a positive whole number"}), 400
+    try:
+        created = supabase.table("events").insert({
+            "title": title,
+            "organizer_id": organizer_id,
+            "capacity": capacity,
+            "status": "open",
+        }).execute()
+        return jsonify(created.data[0]), 201
     except APIError as error:
         return jsonify({"error": error.message}), 500
 
 
 @app.route("/api/events/<event_id>", methods=["GET"])
 def get_event(event_id):
+    if supabase is None:
+        return jsonify({"error": "Supabase is not configured"}), 503
     if not valid_uuid(event_id):
         return jsonify({"error": "Invalid event id"}), 400
     try:
@@ -60,6 +118,8 @@ def get_event(event_id):
 
 @app.route("/api/registrations", methods=["POST"])
 def create_registration():
+    if supabase is None:
+        return jsonify({"error": "Supabase is not configured"}), 503
     data = request.get_json(silent=True) or {}
     user_id = data.get("user_id")
     event_id = data.get("event_id")
@@ -105,6 +165,8 @@ def create_registration():
 
 @app.route("/api/me/registrations", methods=["GET"])
 def list_user_registrations():
+    if supabase is None:
+        return jsonify({"error": "Supabase is not configured"}), 503
     user_id = request.args.get("user_id")
     if not valid_uuid(user_id):
         return jsonify({"error": "A valid user_id query parameter is required"}), 400
@@ -122,6 +184,8 @@ def list_user_registrations():
 
 @app.route("/api/events/<event_id>/registrations", methods=["GET"])
 def list_event_registrations(event_id):
+    if supabase is None:
+        return jsonify({"error": "Supabase is not configured"}), 503
     organizer_id = request.args.get("organizer_id")
     if not valid_uuid(event_id) or not valid_uuid(organizer_id):
         return jsonify({"error": "Valid event_id and organizer_id are required"}), 400
@@ -137,7 +201,7 @@ def list_event_registrations(event_id):
 
         response = (
             supabase.table("registrations")
-            .select("*, users(id, email, role)")
+            .select("*, users(id, role)")
             .eq("event_id", event_id)
             .execute()
         )
@@ -157,4 +221,8 @@ def valid_uuid(value):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", "5000")),
+        debug=os.environ.get("FLASK_DEBUG") == "1",
+    )
