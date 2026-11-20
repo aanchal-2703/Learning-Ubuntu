@@ -1,4 +1,4 @@
-const API_BASE = (import.meta.env.VITE_API_URL || 'https://backend-pied-one-94.vercel.app').replace(/\/+$/, '');
+const API_BASE = (import.meta.env.VITE_API_URL || 'https://learning-ubuntu.onrender.com').replace(/\/+$/, '');
 
 async function request(path, options = {}) {
   let response;

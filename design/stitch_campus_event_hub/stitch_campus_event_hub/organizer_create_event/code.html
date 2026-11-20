@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#121318;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "surface-container-low": "#1a1b21", "on-secondary": "#5f1500", "secondary-fixed-dim": "#ffb5a0", "on-tertiary-fixed-variant": "#004f54", "inverse-primary": "#7825ea", "on-primary-fixed": "#270058", "surface-container-high": "#292a2f", "inverse-on-surface": "#2f3036", "on-surface": "#e3e1e9", "on-tertiary": "#00363a", "background": "#121318", "on-tertiary-container": "#d7fbff", "on-primary-container": "#faf1ff", "on-error": "#690005", "surface-dim": "#121318", "on-tertiary-fixed": "#002022", "on-primary": "#41008b", "surface-bright": "#38393f", "primary-container": "#8a3ffc", "surface-container-lowest": "#0d0e13", "surface-tint": "#d4bbff", "tertiary": "#00dbe9", "surface-container": "#1e1f25", "error-container": "#93000a", "tertiary-container": "#007c84", "outline": "#968da1", "on-background": "#e3e1e9", "secondary-fixed": "#ffdbd1", "error": "#ffb4ab", "surface": "#121318", "primary-fixed-dim": "#d4bbff", "secondary": "#ffb5a0", "primary-fixed": "#ebdcff", "inverse-surface": "#e3e1e9", "on-primary-fixed-variant": "#5d00c2", "primary": "#d4bbff", "surface-container-highest": "#34343a", "tertiary-fixed-dim": "#00dbe9", "on-secondary-container": "#fffbff", "outline-variant": "#4b4455", "on-secondary-fixed-variant": "#862200", "secondary-container": "#d73b00", "tertiary-fixed": "#7df4ff", "surface-variant": "#34343a", "on-surface-variant": "#cdc2d8", "on-error-container": "#ffdad6", "on-secondary-fixed": "#3b0900" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-lg": "1.5rem", "gutter-mobile": "1rem", "space-xl": "2.5rem", "margin-mobile": "1rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "margin": "2.5rem", "space-md": "1rem", "gutter": "1.5rem" }, fontFamily: { "headline-lg-mobile": ["Space Grotesk"], "label-mono-xs": ["JetBrains Mono"], "display-hero": ["Space Grotesk"], "headline-sm": ["Space Grotesk"], "body-lg": ["Plus Jakarta Sans"], "label-mono-sm": ["JetBrains Mono"], "headline-lg": ["Space Grotesk"], "label-ui": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "headline-md": ["Space Grotesk"], "display-hero-mobile": ["Space Grotesk"], "body-sm": ["Plus Jakarta Sans"] }, fontSize: { "headline-lg-mobile": ["26px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "700" }], "label-mono-xs": ["10px", { lineHeight: "12px", letterSpacing: "0.06em", fontWeight: "600" }], "display-hero": ["56px", { lineHeight: "64px", letterSpacing: "-0.03em", fontWeight: "700" }], "headline-sm": ["18px", { lineHeight: "24px", letterSpacing: "0em", fontWeight: "600" }], "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }], "label-mono-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "500" }], "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" }], "label-ui": ["13px", { lineHeight: "16px", letterSpacing: "0.01em", fontWeight: "600" }], "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }], "headline-md": ["22px", { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" }], "display-hero-mobile": ["36px", { lineHeight: "42px", letterSpacing: "-0.02em", fontWeight: "700" }], "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 px-margin-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><img alt="Pulse Campus Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBlzij2Ac2zQuz4gKW3kbY-mRlKVQF3L2xk6KQwad87IeL7MI8QnXbFl6VTPOmD0tl2LGz4S-nv67yPgThBSFOr2RDXIt4OYC46gFEvMY7mOCqqFmpXGmJcfRKNu2SJU1tonIEHukhZQSf8tAvr3LuP-8yB4fwi91aCaHFBCWZKyv531DPOXMHwGyIAhOBZA-PQbVPfmm3LG8aBolD0B7g6KW4bpYdOhcit_ro4LXY-5g"/><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Pulse</span><span class="font-body-sm text-body-sm text-on-surface-variant">Create Event</span></div><span class="font-label-mono-xs text-label-mono-xs text-tertiary uppercase">Campus Live</span></div></div><div class="flex items-center gap-space-xs"><div class="relative flex items-center bg-surface-container-high/80 rounded-lg px-space-xs py-1"><span class="material-symbols-outlined text-[16px] text-primary ml-1">shield_person</span><select class="bg-transparent font-label-mono-xs text-label-mono-xs text-on-surface focus:outline-none appearance-none pr-space-md pl-1 py-1 cursor-pointer"><option class="bg-surface-container-highest text-on-surface" value="student">Student</option><option class="bg-surface-container-highest text-on-surface" value="organizer">Organizer</option><option class="bg-surface-container-highest text-on-surface" value="admin">Admin</option></select><span class="material-symbols-outlined text-[14px] text-outline pointer-events-none absolute right-1">expand_more</span></div><div class="relative flex items-center bg-surface-container-high/80 rounded-lg px-space-xs py-1"><span class="material-symbols-outlined text-[16px] text-tertiary ml-1">fingerprint</span><select class="bg-transparent font-label-mono-xs text-label-mono-xs text-on-surface focus:outline-none appearance-none pr-space-md pl-1 py-1 cursor-pointer"><option class="bg-surface-container-highest text-on-surface" value="usr_9f4a">usr_9f4a (Alex)</option><option class="bg-surface-container-highest text-on-surface" value="usr_3b2c">usr_3b2c (Jordan)</option><option class="bg-surface-container-highest text-on-surface" value="usr_7e11">usr_7e11 (Sam)</option></select><span class="material-symbols-outlined text-[14px] text-outline pointer-events-none absolute right-1">expand_more</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full px-margin-mobile pt-20 pb-28 bg-surface min-h-screen"><div class="flex flex-col w-full pb-8 space-y-6">
+<!-- Role Access Confirmation & Studio Intro -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low p-4 shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container">
+<span class="material-symbols-outlined text-[16px]">campaign</span>
+</span>
+<span class="font-label-mono-xs text-label-mono-xs uppercase text-secondary tracking-wider">Organizer Studio v2.4</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-mono-xs text-label-mono-xs">
+        ROLE: ORGANIZER
+      </span>
+</div>
+<div class="mt-2">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Publish New Pulse</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Direct sync to <code class="text-tertiary font-label-mono-xs">public.events</code> campus ledger.</p>
+</div>
+</div>
+<!-- Main Creation Form -->
+<form class="space-y-5" id="event-creation-form" onsubmit="event.preventDefault();">
+<!-- Title Input -->
+<div class="flex flex-col space-y-1.5">
+<div class="flex justify-between items-center">
+<label class="font-label-ui text-label-ui text-on-surface flex items-center gap-1" for="event-title">
+          Event Title <span class="text-error">*</span>
+</label>
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant" id="char-counter">0/60</span>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest text-on-surface placeholder:text-outline-variant font-body-md text-body-md px-3.5 py-3 rounded-lg focus:outline-none focus:ring-0 shadow-inner" id="event-title" maxlength="60" placeholder="e.g. Neon Quad Fest: Tech &amp; Beats 2025" type="text" value="Neon Quad Fest: Tech &amp; Soundscape"/>
+</div>
+</div>
+<!-- Organizer Metadata Grid (Auto-populated uuid) -->
+<div class="grid grid-cols-2 gap-3">
+<div class="flex flex-col space-y-1 bg-surface-container-low p-3 rounded-lg">
+<label class="font-label-mono-xs text-label-mono-xs text-on-surface-variant uppercase">Organizer UUID</label>
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[15px] text-primary">verified_user</span>
+<span class="font-label-mono-sm text-label-mono-sm text-on-surface font-semibold truncate" id="org-uuid-display">usr_3b2c...7f89</span>
+</div>
+<span class="font-label-mono-xs text-label-mono-xs text-tertiary">Schema: organizer_id</span>
+</div>
+<div class="flex flex-col space-y-1 bg-surface-container-low p-3 rounded-lg">
+<label class="font-label-mono-xs text-label-mono-xs text-on-surface-variant uppercase">Visibility State</label>
+<div class="relative flex items-center">
+<select class="w-full bg-transparent font-label-ui text-label-ui text-on-surface appearance-none focus:outline-none cursor-pointer pr-5 py-0.5" id="event-status">
+<option class="bg-surface-container-highest text-on-surface" selected="" value="published/open">published/open</option>
+<option class="bg-surface-container-highest text-on-surface" value="draft">draft (private)</option>
+<option class="bg-surface-container-highest text-on-surface" value="unlisted">unlisted (link only)</option>
+</select>
+<span class="material-symbols-outlined text-[16px] text-outline-variant pointer-events-none absolute right-0">expand_more</span>
+</div>
+<span class="font-label-mono-xs text-label-mono-xs text-secondary-fixed-dim" id="status-hint">Instant student feed blast</span>
+</div>
+</div>
+<!-- Venue Picker -->
+<div class="flex flex-col space-y-2">
+<label class="font-label-ui text-label-ui text-on-surface flex items-center justify-between">
+<span>Campus Venue</span>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">location_id: geo</span>
+</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="venue-btn flex flex-col items-center justify-center p-2.5 rounded-lg bg-surface-container-low text-on-surface-variant transition-all hover:bg-surface-container-high text-center" data-venue="Auditorium" type="button">
+<span class="material-symbols-outlined text-[20px] mb-1 text-outline">theater_comedy</span>
+<span class="font-label-ui text-label-ui">Auditorium</span>
+<span class="font-label-mono-xs text-label-mono-xs text-outline-variant mt-0.5">Bldg A</span>
+</button>
+<button class="venue-btn flex flex-col items-center justify-center p-2.5 rounded-lg bg-surface-container-low text-on-surface-variant transition-all hover:bg-surface-container-high text-center" data-venue="Student Union Hall" type="button">
+<span class="material-symbols-outlined text-[20px] mb-1 text-outline">apartment</span>
+<span class="font-label-ui text-label-ui">Union Hall</span>
+<span class="font-label-mono-xs text-label-mono-xs text-outline-variant mt-0.5">Central Hub</span>
+</button>
+<button class="venue-btn active-venue flex flex-col items-center justify-center p-2.5 rounded-lg bg-primary/10 text-primary transition-all text-center" data-venue="The Quad (Outdoor)" type="button">
+<span class="material-symbols-outlined text-[20px] mb-1 text-primary">park</span>
+<span class="font-label-ui text-label-ui font-semibold">The Quad</span>
+<span class="font-label-mono-xs text-label-mono-xs text-primary/80 mt-0.5">Main Lawn</span>
+</button>
+</div>
+<input id="selected-venue" type="hidden" value="The Quad (Outdoor)"/>
+</div>
+<!-- Capacity Stepper (int4) -->
+<div class="flex flex-col space-y-2 bg-surface-container-low p-3.5 rounded-xl">
+<div class="flex justify-between items-center">
+<div>
+<label class="font-label-ui text-label-ui text-on-surface">Capacity Limit</label>
+<p class="font-label-mono-xs text-label-mono-xs text-on-surface-variant">Schema: <span class="text-tertiary">capacity (int4)</span></p>
+</div>
+<div class="flex items-center space-x-2">
+<input class="w-20 bg-surface-container-lowest text-on-surface font-label-mono-sm text-label-mono-sm text-right px-2 py-1.5 rounded-md focus:outline-none" id="capacity-input" max="10000" min="10" type="number" value="350"/>
+<span class="font-label-mono-xs text-label-mono-xs text-outline">seats</span>
+</div>
+</div>
+<!-- Quick Steppers -->
+<div class="grid grid-cols-4 gap-1.5 pt-1">
+<button class="py-1 px-2 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-xs text-label-mono-xs transition-colors flex items-center justify-center" onclick="adjustCapacity(50)" type="button">
+          +50
+        </button>
+<button class="py-1 px-2 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-xs text-label-mono-xs transition-colors flex items-center justify-center" onclick="adjustCapacity(100)" type="button">
+          +100
+        </button>
+<button class="py-1 px-2 rounded bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-mono-xs text-label-mono-xs transition-colors flex items-center justify-center" onclick="adjustCapacity(250)" type="button">
+          +250
+        </button>
+<button class="py-1 px-2 rounded bg-primary-container/30 hover:bg-primary-container/50 text-primary-fixed font-label-mono-xs text-label-mono-xs transition-colors flex items-center justify-center" onclick="resetCapacity(500)" type="button">
+          Max 500
+        </button>
+</div>
+</div>
+<!-- Category Pill Selector -->
+<div class="flex flex-col space-y-1.5">
+<label class="font-label-ui text-label-ui text-on-surface">Category Classification</label>
+<div class="flex flex-wrap gap-2" id="category-container">
+<button class="cat-pill px-3 py-1.5 rounded-full font-label-ui text-label-ui bg-primary-container text-on-primary-container shadow-sm" data-category="Tech &amp; Hackathon" type="button">
+          Tech &amp; Hackathon
+        </button>
+<button class="cat-pill px-3 py-1.5 rounded-full font-label-ui text-label-ui bg-surface-container text-on-surface-variant hover:bg-surface-container-high" data-category="Nightlife &amp; Concert" type="button">
+          Nightlife &amp; Concert
+        </button>
+<button class="cat-pill px-3 py-1.5 rounded-full font-label-ui text-label-ui bg-surface-container text-on-surface-variant hover:bg-surface-container-high" data-category="Career &amp; Alumni" type="button">
+          Career &amp; Alumni
+        </button>
+<button class="cat-pill px-3 py-1.5 rounded-full font-label-ui text-label-ui bg-surface-container text-on-surface-variant hover:bg-surface-container-high" data-category="Arts &amp; Culture" type="button">
+          Arts &amp; Culture
+        </button>
+</div>
+</div>
+<!-- Perks & Incentives (Chips) -->
+<div class="flex flex-col space-y-2">
+<div class="flex items-center justify-between">
+<label class="font-label-ui text-label-ui text-on-surface">Student Perks Attached</label>
+<span class="font-label-mono-xs text-label-mono-xs text-secondary">Drive attendance +40%</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<label class="perk-checkbox flex items-center space-x-2 p-2 rounded-lg bg-surface-container-low cursor-pointer hover:bg-surface-container transition-colors">
+<input checked="" class="w-4 h-4 rounded text-primary-container focus:ring-0 bg-surface-container-lowest" id="perk-food" type="checkbox"/>
+<span class="font-label-ui text-label-ui text-on-surface select-none">Free Food</span>
+</label>
+<label class="perk-checkbox flex items-center space-x-2 p-2 rounded-lg bg-surface-container-low cursor-pointer hover:bg-surface-container transition-colors">
+<input checked="" class="w-4 h-4 rounded text-primary-container focus:ring-0 bg-surface-container-lowest" id="perk-swag" type="checkbox"/>
+<span class="font-label-ui text-label-ui text-on-surface select-none">Swag Bag</span>
+</label>
+<label class="perk-checkbox flex items-center space-x-2 p-2 rounded-lg bg-surface-container-low cursor-pointer hover:bg-surface-container transition-colors">
+<input class="w-4 h-4 rounded text-primary-container focus:ring-0 bg-surface-container-lowest" id="perk-cert" type="checkbox"/>
+<span class="font-label-ui text-label-ui text-on-surface select-none">Cert &amp; Credit</span>
+</label>
+</div>
+</div>
+<!-- Visual Media / Banner Mockup -->
+<div class="flex flex-col space-y-2">
+<div class="flex justify-between items-center">
+<label class="font-label-ui text-label-ui text-on-surface">Cover Art Media</label>
+<span class="font-label-mono-xs text-label-mono-xs text-tertiary">1200x630 Optimized</span>
+</div>
+<div class="relative w-full h-36 rounded-xl overflow-hidden bg-surface-container-lowest group cursor-pointer shadow-md">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Vibrant campus quad neon party at dusk with purple violet and electric cyan festival laser lighting, silhouettes of university students cheering, synthwave ambient glow, hyper modern collegiate atmosphere" id="banner-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNSKc12wm9CbmO8mxHw8OUWHl2Ax1eLSsuiWP3Q2P-iiPN-Yw38nmdsWPY7tgWfahQzL-wTv2o4VNv85VzKxHbOHbE5isQppzpYpIANkECdt5WXtsJ2TuUwEEz1fc2E4kMPFXr7KeTrKFzed4jl6k4SuJdJ2VvSiqDcx2kGdDmNC4eNqM0bdlzorAL4CJfx0Fcnt6EYMKaB7uNkHN0nI-Lb5klhi2ZuX5sIbNqPe1U"/>
+<div class="absolute inset-0 bg-surface-container-lowest/60 backdrop-blur-[2px] flex flex-col items-center justify-center space-y-1.5 p-3 text-center transition-opacity group-hover:bg-surface-container-lowest/40">
+<div class="w-10 h-10 rounded-full bg-primary/20 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">add_photo_alternate</span>
+</div>
+<p class="font-label-ui text-label-ui text-on-surface">Tap to replace banner image</p>
+<span class="font-label-mono-xs text-label-mono-xs text-outline-variant">SVG, WebP, PNG up to 8MB</span>
+</div>
+</div>
+</div>
+<!-- Real-time Live Preview Section -->
+<div class="flex flex-col space-y-2.5 pt-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Live Student Feed Preview</span>
+</div>
+<span class="font-label-mono-xs text-label-mono-xs text-on-surface-variant uppercase tracking-wider">Mobile Viewport</span>
+</div>
+<!-- Live Interactive Card Preview -->
+<div class="relative w-full rounded-2xl bg-surface-container overflow-hidden shadow-xl">
+<!-- Banner with overlay badges -->
+<div class="relative h-40 w-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Vibrant college festival crowd with purple and cyan neon lights, students celebrating on outdoor campus green space, sharp cinematic lighting" id="preview-card-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCshfCJxZTgLVhEwQSySZxrHqufvA2sUacDOHr4ADanbVYUjcJkGyhORHKPK4QmSW8UnbZXl2hSzB7neGk25xMQW6TQnB15LDCqaLBmiGZNc3vTkc2mZ6PklGZaKhHysf_zCXPew8RgmTa-_AzBiXuE78iLj-eWt8T_iaabjeRg4tJSeRvx2wNUwDlhFdZIKQ4rou4crSK8f-_grW4rbdaPEQiHjbkeL5QtrcsHJHgy"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-surface-container/20 to-transparent"></div>
+<!-- Category Chip & Status Badge -->
+<div class="absolute top-2.5 left-2.5 flex items-center space-x-1.5">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-tertiary font-label-mono-xs text-label-mono-xs uppercase tracking-wider" id="preview-category-badge">
+              Tech &amp; Hackathon
+            </span>
+</div>
+<div class="absolute top-2.5 right-2.5">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-mono-xs text-label-mono-xs uppercase flex items-center space-x-1" id="preview-status-badge">
+<span class="w-1.5 h-1.5 rounded-full bg-on-secondary-container animate-ping"></span>
+<span>OPEN</span>
+</span>
+</div>
+<!-- Capacity & Perks Floating Strip -->
+<div class="absolute bottom-2 left-2.5 right-2.5 flex items-center justify-between">
+<div class="flex items-center space-x-1" id="preview-perk-badges">
+<span class="perk-badge-food px-2 py-0.5 rounded bg-surface-container-high/90 text-on-surface font-label-mono-xs text-label-mono-xs flex items-center space-x-0.5">
+<span class="material-symbols-outlined text-[12px] text-secondary">restaurant</span>
+<span>Food</span>
+</span>
+<span class="perk-badge-swag px-2 py-0.5 rounded bg-surface-container-high/90 text-on-surface font-label-mono-xs text-label-mono-xs flex items-center space-x-0.5">
+<span class="material-symbols-outlined text-[12px] text-tertiary">redeem</span>
+<span>Swag</span>
+</span>
+</div>
+<div class="flex items-center space-x-1 px-2 py-0.5 rounded bg-surface-container-lowest/90 font-label-mono-xs text-label-mono-xs text-on-surface">
+<span class="material-symbols-outlined text-[12px] text-primary">group</span>
+<span id="preview-capacity-num">350</span>
+<span class="text-outline">spots</span>
+</div>
+</div>
+</div>
+<!-- Event Core Content -->
+<div class="p-3.5 space-y-3">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight" id="preview-title">
+              Neon Quad Fest: Tech &amp; Soundscape
+            </h3>
+<div class="flex items-center space-x-2 mt-1.5 text-on-surface-variant">
+<div class="flex items-center space-x-1">
+<span class="material-symbols-outlined text-[15px] text-primary">location_on</span>
+<span class="font-body-sm text-body-sm text-on-surface" id="preview-venue">The Quad (Outdoor)</span>
+</div>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center space-x-1">
+<span class="material-symbols-outlined text-[15px] text-tertiary">calendar_today</span>
+<span class="font-body-sm text-body-sm">Fri, 8:00 PM</span>
+</div>
+</div>
+</div>
+<!-- Mock Student RSVP Action inside preview -->
+<div class="pt-2 flex items-center justify-between">
+<div class="flex -space-x-1.5 overflow-hidden items-center">
+<div class="inline-block h-6 w-6 rounded-full ring-2 ring-surface-container bg-primary-container text-on-primary-container text-center font-label-mono-xs text-label-mono-xs leading-6">A</div>
+<div class="inline-block h-6 w-6 rounded-full ring-2 ring-surface-container bg-tertiary-container text-on-tertiary-container text-center font-label-mono-xs text-label-mono-xs leading-6">J</div>
+<div class="inline-block h-6 w-6 rounded-full ring-2 ring-surface-container bg-surface-container-high text-on-surface text-center font-label-mono-xs text-label-mono-xs leading-6">+84</div>
+</div>
+<button class="pointer-events-none px-3 py-1.5 rounded-lg bg-surface-container-highest text-on-surface font-label-ui text-label-ui flex items-center space-x-1" type="button">
+<span>View Pass</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Publishing Control Section (CTAs) -->
+<div class="pt-3 space-y-3">
+<!-- High Contrast Primary CTA -->
+<button class="w-full py-3.5 px-4 rounded-xl bg-primary-container text-on-primary-container font-headline-sm text-headline-sm flex items-center justify-center space-x-2 shadow-lg transition-transform active:scale-[0.98] hover:opacity-95" id="publish-btn" type="button">
+<span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+<span>Publish Event to Campus</span>
+</button>
+<div class="grid grid-cols-2 gap-2">
+<button class="w-full py-2.5 px-3 rounded-lg bg-surface-container text-on-surface font-label-ui text-label-ui flex items-center justify-center space-x-1 hover:bg-surface-container-high transition-colors" id="save-draft-btn" type="button">
+<span class="material-symbols-outlined text-[16px]">save</span>
+<span>Save Local Draft</span>
+</button>
+<button class="w-full py-2.5 px-3 rounded-lg bg-surface-container text-on-surface font-label-ui text-label-ui flex items-center justify-center space-x-1 hover:bg-surface-container-high transition-colors" id="preview-web-btn" type="button">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>Audit Specs</span>
+</button>
+</div>
+<!-- Toast Feedback for Instant Delight -->
+<div class="hidden p-3 rounded-lg bg-secondary-container text-on-secondary-container flex items-center space-x-2 shadow-lg transition-all" id="status-toast">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span class="font-body-sm text-body-sm flex-1" id="status-toast-message">Event successfully synced to student feed!</span>
+</div>
+</div>
+</form>
+</div>
+<!-- Inline Interaction Logic (Delightful sync & steppers) -->
+<script>
+  (function initOrganizerStudio() {
+    const titleInput = document.getElementById('event-title');
+    const previewTitle = document.getElementById('preview-title');
+    const charCounter = document.getElementById('char-counter');
+    const capacityInput = document.getElementById('capacity-input');
+    const previewCapacity = document.getElementById('preview-capacity-num');
+    const selectedVenueInput = document.getElementById('selected-venue');
+    const previewVenue = document.getElementById('preview-venue');
+    const venueButtons = document.querySelectorAll('.venue-btn');
+    const statusSelect = document.getElementById('event-status');
+    const previewStatusBadge = document.getElementById('preview-status-badge');
+    const statusHint = document.getElementById('status-hint');
+    const catPills = document.querySelectorAll('.cat-pill');
+    const previewCatBadge = document.getElementById('preview-category-badge');
+    const perkFood = document.getElementById('perk-food');
+    const perkSwag = document.getElementById('perk-swag');
+    const perkCert = document.getElementById('perk-cert');
+    const previewPerks = document.getElementById('preview-perk-badges');
+    const publishBtn = document.getElementById('publish-btn');
+    const statusToast = document.getElementById('status-toast');
+    const statusToastMsg = document.getElementById('status-toast-message');
+
+    // Title live binding
+    if (titleInput && previewTitle && charCounter) {
+      titleInput.addEventListener('input', (e) => {
+        const val = e.target.value.trim();
+        previewTitle.textContent = val || 'Untitled Campus Event';
+        charCounter.textContent = `${e.target.value.length}/60`;
+      });
+    }
+
+    // Capacity quick increment helper
+    window.adjustCapacity = function(amount) {
+      if (!capacityInput || !previewCapacity) return;
+      let current = parseInt(capacityInput.value, 10) || 0;
+      current += amount;
+      capacityInput.value = current;
+      previewCapacity.textContent = current;
+      triggerCardPulse();
+    };
+
+    window.resetCapacity = function(val) {
+      if (!capacityInput || !previewCapacity) return;
+      capacityInput.value = val;
+      previewCapacity.textContent = val;
+      triggerCardPulse();
+    };
+
+    if (capacityInput && previewCapacity) {
+      capacityInput.addEventListener('input', (e) => {
+        previewCapacity.textContent = e.target.value || '0';
+      });
+    }
+
+    // Venue Selection
+    venueButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        venueButtons.forEach(b => {
+          b.classList.remove('bg-primary/10', 'text-primary', 'active-venue');
+          b.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+          const icon = b.querySelector('.material-symbols-outlined');
+          if (icon) {
+            icon.classList.remove('text-primary');
+            icon.classList.add('text-outline');
+          }
+        });
+
+        btn.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+        btn.classList.add('bg-primary/10', 'text-primary', 'active-venue');
+        const activeIcon = btn.querySelector('.material-symbols-outlined');
+        if (activeIcon) {
+          activeIcon.classList.remove('text-outline');
+          activeIcon.classList.add('text-primary');
+        }
+
+        const venueName = btn.getAttribute('data-venue');
+        if (selectedVenueInput) selectedVenueInput.value = venueName;
+        if (previewVenue) previewVenue.textContent = venueName;
+        triggerCardPulse();
+      });
+    });
+
+    // Category Tags
+    catPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        catPills.forEach(p => {
+          p.classList.remove('bg-primary-container', 'text-on-primary-container');
+          p.classList.add('bg-surface-container', 'text-on-surface-variant');
+        });
+        pill.classList.remove('bg-surface-container', 'text-on-surface-variant');
+        pill.classList.add('bg-primary-container', 'text-on-primary-container');
+        
+        const cat = pill.getAttribute('data-category');
+        if (previewCatBadge) previewCatBadge.textContent = cat;
+        triggerCardPulse();
+      });
+    });
+
+    // Perks Toggle
+    function updatePerksPreview() {
+      if (!previewPerks) return;
+      previewPerks.innerHTML = '';
+
+      if (perkFood && perkFood.checked) {
+        const span = document.createElement('span');
+        span.className = 'px-2 py-0.5 rounded bg-surface-container-high/90 text-on-surface font-label-mono-xs text-label-mono-xs flex items-center space-x-0.5';
+        span.innerHTML = '<span class="material-symbols-outlined text-[12px] text-secondary">restaurant</span><span>Food</span>';
+        previewPerks.appendChild(span);
+      }
+      if (perkSwag && perkSwag.checked) {
+        const span = document.createElement('span');
+        span.className = 'px-2 py-0.5 rounded bg-surface-container-high/90 text-on-surface font-label-mono-xs text-label-mono-xs flex items-center space-x-0.5';
+        span.innerHTML = '<span class="material-symbols-outlined text-[12px] text-tertiary">redeem</span><span>Swag</span>';
+        previewPerks.appendChild(span);
+      }
+      if (perkCert && perkCert.checked) {
+        const span = document.createElement('span');
+        span.className = 'px-2 py-0.5 rounded bg-surface-container-high/90 text-on-surface font-label-mono-xs text-label-mono-xs flex items-center space-x-0.5';
+        span.innerHTML = '<span class="material-symbols-outlined text-[12px] text-primary">military_tech</span><span>Cert</span>';
+        previewPerks.appendChild(span);
+      }
+    }
+
+    [perkFood, perkSwag, perkCert].forEach(chk => {
+      if (chk) chk.addEventListener('change', updatePerksPreview);
+    });
+
+    // Status Selector Sync
+    if (statusSelect && previewStatusBadge && statusHint) {
+      statusSelect.addEventListener('change', (e) => {
+        const val = e.target.value;
+        if (val === 'published/open') {
+          previewStatusBadge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-on-secondary-container animate-ping"></span><span>OPEN</span>';
+          previewStatusBadge.className = 'px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-mono-xs text-label-mono-xs uppercase flex items-center space-x-1';
+          statusHint.textContent = 'Instant student feed blast';
+        } else if (val === 'draft') {
+          previewStatusBadge.innerHTML = '<span>DRAFT</span>';
+          previewStatusBadge.className = 'px-2.5 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-mono-xs text-label-mono-xs uppercase flex items-center space-x-1';
+          statusHint.textContent = 'Only visible to event organizers';
+        } else {
+          previewStatusBadge.innerHTML = '<span>UNLISTED</span>';
+          previewStatusBadge.className = 'px-2.5 py-0.5 rounded-full bg-tertiary-container text-on-tertiary-container font-label-mono-xs text-label-mono-xs uppercase flex items-center space-x-1';
+          statusHint.textContent = 'Exclusive QR code link access';
+        }
+      });
+    }
+
+    function triggerCardPulse() {
+      const card = document.querySelector('.bg-surface-container.overflow-hidden.shadow-xl');
+      if (card) {
+        card.classList.add('scale-[1.01]');
+        setTimeout(() => card.classList.remove('scale-[1.01]'), 150);
+      }
+    }
+
+    // Publish Action Mock
+    if (publishBtn && statusToast && statusToastMsg) {
+      publishBtn.addEventListener('click', () => {
+        publishBtn.disabled = true;
+        const originalText = publishBtn.innerHTML;
+        publishBtn.innerHTML = '<span class="material-symbols-outlined text-[20px] animate-spin">refresh</span><span>Transmitting to Ledger...</span>';
+        
+        setTimeout(() => {
+          publishBtn.disabled = false;
+          publishBtn.innerHTML = originalText;
+          statusToastMsg.textContent = 'Success! Event broadcasted live to 14,200 campus feeds.';
+          statusToast.classList.remove('hidden');
+          
+          setTimeout(() => {
+            statusToast.classList.add('hidden');
+          }, 4500);
+        }, 800);
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]" data-active-classes="text-primary font-bold"><div class="flex justify-around items-center h-20 px-space-xs"><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-xs py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="explore-feed" href="#"><span class="material-symbols-outlined text-[24px]">dynamic_feed</span><span class="font-label-ui text-label-ui mt-0.5">Explore</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-xs py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="my-registrations" href="#"><span class="material-symbols-outlined text-[24px]">confirmation_number</span><span class="font-label-ui text-label-ui mt-0.5">Tickets</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-xs py-1 transition-colors text-primary font-bold" data-path="create-event" href="#"><div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-lg"><span class="material-symbols-outlined text-[22px]">add</span></div><span class="font-label-ui text-label-ui mt-0.5">Create</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] px-space-xs py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-path="reports-analytics" href="#"><span class="material-symbols-outlined text-[24px]">monitoring</span><span class="font-label-ui text-label-ui mt-0.5">Reports</span></a></div></nav></body></html>
